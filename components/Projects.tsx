@@ -29,7 +29,7 @@ const projects = [
   },
   {
     title: "Industrial Manufacturing Plant",
-    image: "/images/project3.jpg",
+    image: "/images/project34.jpg",
     location: "Mumbai, Maharashtra",
     year: "2023",
     type: "Industrial",
@@ -39,7 +39,7 @@ const projects = [
   },
   {
     title: "City Hospital Complex",
-    image: "/images/project4.jpg",
+    image: "/images/project43.jpg",
     location: "Bengaluru, Karnataka",
     year: "2026",
     type: "Healthcare",
