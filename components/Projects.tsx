@@ -28,24 +28,24 @@ const projects = [
       "Luxury villa project offering spacious homes with modern amenities, energy-efficient systems and beautiful landscape planning.",
   },
   {
-    title: "Industrial Manufacturing Plant",
+    title: "Residential Towers",
     image: "/images/project3.jpg",
     location: "Mumbai, Maharashtra",
     year: "2023",
     type: "Industrial",
     area: "40,000 sq.ft",
     description:
-      "High-performance industrial facility developed with advanced safety standards, structural durability and optimized production layout.",
+      "A residential tower is a multi-story building primarily designed for people to live in",
   },
   {
-    title: "City Hospital Complex",
+    title: "FARM HOUSE",
     image: "/images/project4.jpg",
     location: "Bengaluru, Karnataka",
     year: "2026",
     type: "Healthcare",
     area: "30,000 sq.ft",
     description:
-      "Modern healthcare infrastructure equipped with world-class construction quality, emergency accessibility and future expansion capabilities.",
+      "A farmhouse is a residential building located on agricultural land, traditionally serving as the primary dwelling for farmers and their families, and now often used as a peaceful retreat or vacation home.",
   },
 ];
 
