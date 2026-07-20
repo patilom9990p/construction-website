@@ -17,7 +17,6 @@ const projects = [
     description:
       "A premium commercial office tower built with sustainable materials, earthquake-resistant engineering and modern architectural design.",
   },
-
   {
     title: "Green Valley Villas",
     image: "/images/project1.jpg",
@@ -28,7 +27,6 @@ const projects = [
     description:
       "Luxury villa project offering spacious homes with modern amenities, energy-efficient systems and beautiful landscape planning.",
   },
-
   {
     title: "Industrial Manufacturing Plant",
     image: "/images/project3.jpg",
@@ -39,7 +37,6 @@ const projects = [
     description:
       "High-performance industrial facility developed with advanced safety standards, structural durability and optimized production layout.",
   },
-
   {
     title: "City Hospital Complex",
     image: "/images/project4.jpg",
@@ -53,66 +50,71 @@ const projects = [
 ];
 
 export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState<
-    (typeof projects)[0] | null
-  >(null);
-const [category, setCategory] = useState("All");
-const filteredProjects =
-  category === "All"
-    ? projects
-    : projects.filter(
-        (project) => project.type === category
-      );
+  const [selectedProject, setSelectedProject] =
+    useState<(typeof projects)[0] | null>(null);
+
+  const [category, setCategory] = useState("All");
+
+  const filteredProjects =
+    category === "All"
+      ? projects
+      : projects.filter((project) => project.type === category);
+
   return (
     <>
-      <section
-        id="projects"
-        className="bg-white py-28"
-      ><div className="flex flex-wrap justify-center gap-4 mt-12 mb-16">
+      <section id="projects" className="bg-white py-28">
 
-  {[
-    "All",
-    "Residential",
-    "Commercial",
-    "Industrial",
-    "Healthcare",
-  ].map((item) => (
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-    <button
-      key={item}
-      onClick={() => setCategory(item)}
-      className={`px-6 py-3 rounded-full font-semibold transition-all duration-300
-      ${
-        category === item
-          ? "bg-orange-600 text-white shadow-lg"
-          : "bg-gray-100 hover:bg-orange-100"
-      }`}
-    >
-      {item}
-    </button>
+          {/* Filter Buttons */}
 
-  ))}
+          <div className="flex flex-wrap justify-center gap-4 mb-16">
 
-</div>
-        <div className="max-w-7xl mx-auto px-8">
+            {[
+              "All",
+              "Residential",
+              "Commercial",
+              "Industrial",
+              "Healthcare",
+            ].map((item) => (
+
+              <button
+                key={item}
+                onClick={() => setCategory(item)}
+                className={`px-6 py-3 rounded-full font-semibold transition-all duration-300
+                ${
+                  category === item
+                    ? "bg-orange-600 text-white shadow-lg"
+                    : "bg-gray-100 text-gray-800 hover:bg-orange-100"
+                }`}
+              >
+                {item}
+              </button>
+
+            ))}
+
+          </div>
+
+          {/* Heading */}
 
           <div className="text-center">
 
-            <p className="uppercase tracking-[6px] text-orange-600 font-semibold">
-              Our Portfolio
+            <p className="uppercase tracking-[6px] text-orange-600 font-semibold text-sm">
+              OUR PORTFOLIO
             </p>
 
-            <h2 className="text-5xl font-black mt-4">
+            <h2 className="mt-4 text-4xl md:text-6xl font-black text-gray-900">
               Featured Projects
             </h2>
 
-            <p className="mt-6 text-gray-600 max-w-2xl mx-auto leading-8">
-              Discover some of our landmark construction projects
-              completed with quality craftsmanship and innovative
-              engineering solutions.
+            <p className="mt-6 max-w-3xl mx-auto text-lg leading-8 text-gray-600">
+              Discover some of our landmark construction projects completed
+              with quality craftsmanship and innovative engineering solutions.
             </p>
 
           </div>
+
+          {/* Cards */}
 
           <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8 mt-20">
 
@@ -122,14 +124,14 @@ const filteredProjects =
                 key={index}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.15 }}
-                whileHover={{ y: -8 }}
+                whileHover={{ y: -10 }}
                 className="group cursor-pointer"
                 onClick={() => setSelectedProject(project)}
               >
 
-                <div className="relative h-[420px] rounded-3xl overflow-hidden shadow-xl">
+                <div className="relative h-[420px] overflow-hidden rounded-3xl shadow-xl">
 
                   <Image
                     src={project.image}
@@ -142,15 +144,15 @@ const filteredProjects =
 
                   <div className="absolute bottom-0 left-0 p-7 text-white">
 
-                    <span className="text-orange-400 font-semibold uppercase tracking-[3px]">
+                    <span className="uppercase tracking-[3px] font-semibold text-orange-400">
                       {project.type}
                     </span>
 
-                    <h3 className="text-2xl font-bold mt-2">
+                    <h3 className="mt-2 text-2xl font-bold text-white">
                       {project.title}
                     </h3>
 
-                    <button className="mt-6 flex items-center gap-2 text-orange-300 font-semibold group-hover:gap-4 transition-all">
+                    <button className="mt-6 flex items-center gap-2 font-semibold text-orange-300 transition-all group-hover:gap-4">
 
                       View Details
 
@@ -169,6 +171,7 @@ const filteredProjects =
           </div>
 
         </div>
+
       </section>
 
       <ProjectModal

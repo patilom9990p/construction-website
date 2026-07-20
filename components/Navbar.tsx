@@ -21,33 +21,34 @@ export default function Navbar() {
     };
 
     window.addEventListener("scroll", scroll);
-
     return () => window.removeEventListener("scroll", scroll);
   }, []);
 
   const scrollToSection = (id: string) => {
-  const section = document.getElementById(id);
+    const section = document.getElementById(id);
 
-  if (section) {
-    const y =
-      section.getBoundingClientRect().top +
-      window.pageYOffset -
-      90; // Navbar height
+    if (section) {
+      const y =
+        section.getBoundingClientRect().top +
+        window.pageYOffset -
+        90;
 
-    window.scrollTo({
-      top: y,
-      behavior: "smooth",
-    });
-  }
-};
+      window.scrollTo({
+        top: y,
+        behavior: "smooth",
+      });
+
+      setMobileOpen(false);
+    }
+  };
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-white/95 backdrop-blur-xl shadow-lg"
-            : "bg-transparent"
+            ? "bg-white/95 backdrop-blur-xl shadow-xl"
+            : "bg-black/25 backdrop-blur-md"
         }`}
       >
         <div className="max-w-7xl mx-auto h-20 px-8 flex items-center justify-between">
@@ -58,14 +59,14 @@ export default function Navbar() {
             onClick={() => scrollToSection("home")}
             className="flex items-center gap-3"
           >
-            <div className="w-12 h-12 rounded-xl bg-orange-600 text-white font-bold flex items-center justify-center">
+            <div className="w-12 h-12 rounded-xl bg-orange-600 text-white font-bold flex items-center justify-center shadow-lg">
               SC
             </div>
 
             <div className="text-left">
               <h2
                 className={`font-bold text-xl ${
-                  scrolled ? "text-gray-900" : "text-white"
+                  scrolled ? "text-slate-900" : "text-white"
                 }`}
               >
                 Skyline
@@ -73,7 +74,7 @@ export default function Navbar() {
 
               <p
                 className={`text-xs tracking-[4px] ${
-                  scrolled ? "text-gray-500" : "text-gray-300"
+                  scrolled ? "text-slate-500" : "text-white/80"
                 }`}
               >
                 CONSTRUCTION
@@ -90,8 +91,10 @@ export default function Navbar() {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`transition hover:text-orange-600 font-medium ${
-                  scrolled ? "text-gray-800" : "text-white"
+                className={`font-medium transition duration-300 hover:text-orange-600 ${
+                  scrolled
+                    ? "text-slate-800"
+                    : "text-white"
                 }`}
               >
                 {item.title}
@@ -103,11 +106,13 @@ export default function Navbar() {
 
           {/* Right */}
 
-          <div className="hidden lg:flex items-center gap-5">
+          <div className="hidden lg:flex items-center gap-6">
 
             <div
               className={`flex items-center gap-2 ${
-                scrolled ? "text-gray-800" : "text-white"
+                scrolled
+                  ? "text-slate-800"
+                  : "text-white"
               }`}
             >
               <Phone size={18} />
@@ -117,7 +122,10 @@ export default function Navbar() {
               </span>
             </div>
 
-            <button className="bg-orange-600 hover:bg-orange-700 transition text-white px-6 py-3 rounded-xl font-semibold shadow-lg">
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-xl font-semibold shadow-lg transition duration-300 hover:scale-105"
+            >
               Get Quote
             </button>
 
@@ -127,8 +135,10 @@ export default function Navbar() {
 
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className={`lg:hidden ${
-              scrolled ? "text-gray-900" : "text-white"
+            className={`lg:hidden transition ${
+              scrolled
+                ? "text-slate-900"
+                : "text-white"
             }`}
           >
             {mobileOpen ? <X size={30} /> : <Menu size={30} />}
@@ -140,7 +150,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
 
       <div
-        className={`fixed top-20 left-0 w-full bg-white z-40 overflow-hidden transition-all duration-500 ${
+        className={`fixed top-20 left-0 w-full bg-white shadow-xl z-40 overflow-hidden transition-all duration-500 ${
           mobileOpen ? "max-h-screen" : "max-h-0"
         }`}
       >
@@ -151,14 +161,17 @@ export default function Navbar() {
             <button
               key={item.id}
               onClick={() => scrollToSection(item.id)}
-              className="text-left text-xl font-semibold hover:text-orange-600"
+              className="text-left text-xl font-semibold text-slate-800 hover:text-orange-600 transition"
             >
               {item.title}
             </button>
 
           ))}
 
-          <button className="bg-orange-600 text-white py-4 rounded-xl mt-4">
+          <button
+            onClick={() => scrollToSection("contact")}
+            className="bg-orange-600 hover:bg-orange-700 text-white py-4 rounded-xl font-semibold transition"
+          >
             Get Quote
           </button>
 
